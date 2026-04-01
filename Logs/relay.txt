@@ -1,0 +1,23 @@
+[2026-01-26T20:06:55.167Z] [INFO] === RELAY SERVER STARTED ===
+[2026-01-26T20:06:55.167Z] [INFO] Initializing relay components...
+[2026-01-26T20:06:55.167Z] [INFO] Parsed config: {
+  "port": 9001,
+  "editorPid": "45891",
+  "shutdownDelaySeconds": 180
+}
+[2026-01-26T20:06:55.167Z] [INFO] Command line arguments: [
+  "bun",
+  "/$bunfs/root/relay_mac_arm64",
+  "9001",
+  "45891",
+  "180"
+]
+[2026-01-26T20:06:55.167Z] [INFO] Starting relay server...
+[2026-01-26T20:06:55.167Z] [INFO] Creating RelayEditor...
+[2026-01-26T20:06:55.171Z] [INFO] WebSocket server started
+[2026-01-26T20:06:55.171Z] [INFO] Relay server initialization completed
+[2026-01-26T20:06:56.103Z] [INFO] Unity client connected with ID: editor-45891-qafui1
+[2026-01-26T20:08:33.969Z] [INFO] Client disconnected - blocking incoming messages and caching for replay
+[2026-01-26T20:08:33.978Z] [WARN] Client disconnected - cloud session will persist until auto-shutdown, reason: Client disconnected
+[2026-01-26T20:08:33.981Z] [INFO] Auto-shutdown timer started due to client disconnection
+[2026-01-26T20:11:33.996Z] [INFO] Shutdown: Initiating graceful shutdown: Dedicated client disconnected

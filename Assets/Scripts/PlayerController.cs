@@ -6,9 +6,11 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     Animator playerAnim;
-    [SerializeField] private float speed = 1;
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private float turnSpeed = 10f;
+    public CharacterController controller;
+    [SerializeField] private float speed = 3;
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity; 
+    public Transform cam;
 
     private void Awake()
     {
@@ -28,14 +30,22 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.wKey.isPressed) v = 1f;
         if (Keyboard.current.sKey.isPressed) v = -1f;
 
-        Vector3 dir = new Vector3(h, 0f, v);
+        Vector3 dir = new Vector3(h, 0f, v).normalized;
 
-        if (dir.magnitude > 1f) dir.Normalize();
+        if (dir.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y ;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            
+            //RunForward
+            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            bool isRunning = Keyboard.current.wKey.isPressed;
+            playerAnim.SetBool("RunForward", isRunning);
+            controller.Move(moveDirection.normalized * speed * Time.deltaTime); 
+        }
 
-        //RunForward
-        bool isRunning = Keyboard.current.wKey.isPressed;
-        playerAnim.SetBool("RunForward", isRunning);
-        transform.Translate(dir * speed * Time.deltaTime, Space.World);
+
 
         //drink
         if (Keyboard.current.qKey.wasPressedThisFrame)
@@ -49,29 +59,6 @@ public class PlayerController : MonoBehaviour
             //enable the hitbox
             playerAnim.SetTrigger("Hook");
             //turn it back off
-        }
-
-        if (Camera.main != null)
-        {
-            cameraTransform = Camera.main.transform;
-        }
-        else
-        {
-            Debug.Log("No main camera found");
-        }
-
-        if (cameraTransform == null) return;
-        Vector3 camForward = cameraTransform.forward;
-        camForward.y = 0f;
-
-        if (camForward.sqrMagnitude> 0.001f)
-        {
-            Quaternion target = Quaternion.LookRotation(camForward);
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                target,
-                turnSpeed = Time.deltaTime
-            );
         }
     }
 }
