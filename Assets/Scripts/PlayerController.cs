@@ -30,7 +30,12 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.wKey.isPressed) v = 1f;
         if (Keyboard.current.sKey.isPressed) v = -1f;
 
-        Vector3 dir = new Vector3(h, 0f, v).normalized;
+        Vector3 dir = new Vector3(h, 0f, v).normalized; //x, y, z
+
+        bool isRunning = (Keyboard.current.wKey.isPressed ||
+                             Keyboard.current.aKey.wasPressedThisFrame ||
+                             Keyboard.current.sKey.wasPressedThisFrame ||
+                             Keyboard.current.dKey.wasPressedThisFrame);
 
         if (dir.magnitude >= 0.1f)
         {
@@ -40,13 +45,21 @@ public class PlayerController : MonoBehaviour
             
             //RunForward
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            bool isRunning = Keyboard.current.wKey.isPressed;
+
             playerAnim.SetBool("RunForward", isRunning);
             controller.Move(moveDirection.normalized * speed * Time.deltaTime); 
+            
+            //strafe left
+            //bool isStrafingLeft = Keyboard.current.aKey.isPressed;
+            //playerAnim.SetBool("StrafeLeft", isStrafingLeft);
+
+            //strafe right
+            //bool isStrafingRight = Keyboard.current.dKey.isPressed;
+            //playerAnim.SetBool("StrafeRight", isStrafingRight);
         }
+        playerAnim.SetBool("RunForward", isRunning);
 
-
-
+        //special actions
         //drink
         if (Keyboard.current.qKey.wasPressedThisFrame)
         {
