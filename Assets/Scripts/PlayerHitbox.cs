@@ -8,6 +8,9 @@ public class PlayerHitbox : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("contact");
+
+            //take the gameObject the collider is connected to (Banana Man)
+            //then get the animator component attached to the gameObject
             animator = other.gameObject.GetComponent<Animator>();
             animator.enabled = false;
         }

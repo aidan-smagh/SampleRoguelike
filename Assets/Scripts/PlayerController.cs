@@ -12,10 +12,6 @@ public class PlayerController : MonoBehaviour
     float turnSmoothVelocity; 
     public Transform cam;
 
-    [Header("Hitboxes")]
-    [SerializeField] GameObject hookhitboxGO;
-    [SerializeField] Collider hookhitbox;
-
     private void Awake()
     {
         playerAnim = GetComponent<Animator>();
@@ -64,10 +60,7 @@ public class PlayerController : MonoBehaviour
         //hook
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            hookhitboxGO.SetActive(true);
-            //Debug.Log("here");
             playerAnim.SetTrigger("Hook");
-            //hookhitbox.SetActive(false);
         }
     }
 }

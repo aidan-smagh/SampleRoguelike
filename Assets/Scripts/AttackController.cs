@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    [SerializeField] private Collider hookhitbox;
+    [SerializeField] private Collider hookHitboxCollider;
+    [SerializeField] private GameObject hookHitboxGO;
     void Start()
     {
         //hookhitbox.enabled = false;
@@ -10,12 +11,13 @@ public class AttackController : MonoBehaviour
     public void EnableHookHitbox()
     {
         Debug.Log("hook hitbox enabled");
-        hookhitbox.enabled = true;
+        hookHitboxGO.SetActive(true);
+        hookHitboxCollider.enabled = true;
     }
     public void DisableHookHitbox()
     {
         Debug.Log("hook hitbox disabled");
-        hookhitbox.enabled = false;
+        hookHitboxCollider.enabled = false;
         
     }
 }
