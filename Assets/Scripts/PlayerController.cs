@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     float turnSmoothVelocity; 
     public Transform cam;
 
+    [Header("Hitboxes")]
+    [SerializeField] GameObject hookhitboxGO;
+    [SerializeField] Collider hookhitbox;
+
     private void Awake()
     {
         playerAnim = GetComponent<Animator>();
@@ -21,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         float h = 0f;
         float v = 0f;
 
@@ -33,9 +36,9 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = new Vector3(h, 0f, v).normalized; //x, y, z
 
         bool isRunning = (Keyboard.current.wKey.isPressed ||
-                             Keyboard.current.aKey.wasPressedThisFrame ||
-                             Keyboard.current.sKey.wasPressedThisFrame ||
-                             Keyboard.current.dKey.wasPressedThisFrame);
+                             Keyboard.current.aKey.isPressed ||
+                             Keyboard.current.sKey.isPressed ||
+                             Keyboard.current.dKey.isPressed);
 
         if (dir.magnitude >= 0.1f)
         {
@@ -48,14 +51,6 @@ public class PlayerController : MonoBehaviour
 
             playerAnim.SetBool("RunForward", isRunning);
             controller.Move(moveDirection.normalized * speed * Time.deltaTime); 
-            
-            //strafe left
-            //bool isStrafingLeft = Keyboard.current.aKey.isPressed;
-            //playerAnim.SetBool("StrafeLeft", isStrafingLeft);
-
-            //strafe right
-            //bool isStrafingRight = Keyboard.current.dKey.isPressed;
-            //playerAnim.SetBool("StrafeRight", isStrafingRight);
         }
         playerAnim.SetBool("RunForward", isRunning);
 
@@ -69,9 +64,10 @@ public class PlayerController : MonoBehaviour
         //hook
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            //enable the hitbox
+            hookhitboxGO.SetActive(true);
+            //Debug.Log("here");
             playerAnim.SetTrigger("Hook");
-            //turn it back off
+            //hookhitbox.SetActive(false);
         }
     }
 }

@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class PlayerHitbox
+public class PlayerHitbox : MonoBehaviour
 {
-    [SerializeField] private int damage = 10;
 
     void OnTriggerEnter(Collider other)
     {
