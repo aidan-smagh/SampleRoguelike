@@ -17,6 +17,7 @@ public class AttackController : MonoBehaviour
     public void DisableHookHitbox()
     {
         Debug.Log("hook hitbox disabled");
+        hookHitboxGO.SetActive(false);
         hookHitboxCollider.enabled = false;
         
     }

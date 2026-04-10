@@ -386,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 5.94, y: 6.26, z: -10.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -657,6 +657,14 @@ PrefabInstance:
       propertyPath: hookhitbox
       value: 
       objectReference: {fileID: 725660354}
+    - target: {fileID: 4431997998607441610, guid: 22b698361493f4b4daa6e17d50a7b133, type: 3}
+      propertyPath: hookHitboxGO
+      value: 
+      objectReference: {fileID: 1339145030}
+    - target: {fileID: 4431997998607441610, guid: 22b698361493f4b4daa6e17d50a7b133, type: 3}
+      propertyPath: hookHitboxCollider
+      value: 
+      objectReference: {fileID: 725660354}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -736,6 +744,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1339145030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3945975662207413902, guid: 22b698361493f4b4daa6e17d50a7b133, type: 3}
+  m_PrefabInstance: {fileID: 725660353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1374153893
 PrefabInstance:
   m_ObjectHideFlags: 0
