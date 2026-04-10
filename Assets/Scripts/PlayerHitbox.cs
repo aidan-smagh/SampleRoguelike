@@ -13,6 +13,8 @@ public class PlayerHitbox : MonoBehaviour
             //then get the animator component attached to the gameObject
             animator = other.gameObject.GetComponent<Animator>();
             animator.enabled = false;
+            EnemyRagdollKnockback knockback = other.GetComponent<EnemyRagdollKnockback>();
+            knockback.Knockback(other.gameObject);
         }
     }
 }
