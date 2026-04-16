@@ -3,29 +3,29 @@ using UnityEngine;
 public class PlayerHitbox : MonoBehaviour
 {
     private Animator animator;
+    private GameObject enemy;
     void OnTriggerEnter(Collider other)
     {
+        //do nothing if two colliders in the same gameobject collide
         if (other.transform.root == transform.root)
             return;
-        if (other.CompareTag("Enemy"))
-        {
-            Debug.Log("player hitbox contact");
 
-            //take the gameObject the collider is connected to (Banana Man)
-            //then get the animator component attached to the gameObject
-            animator = other.gameObject.GetComponent<Animator>();
+        if (other.CompareTag("EnemyHurtbox"))
+        {
+            enemy = other.transform.parent.gameObject;
+            animator = enemy.GetComponent<Animator>();
             animator.enabled = false;
-            EnemyRagdollKnockback knockback = other.GetComponent<EnemyRagdollKnockback>();
-            knockback.Knockback(other.gameObject);
+            EnemyRagdollKnockback knockback = enemy.GetComponent<EnemyRagdollKnockback>();
+            knockback.Knockback(enemy);
         } 
         else if (other.CompareTag("PlayerHurtbox"))
         {
-            Debug.Log("enemy hitbox contact");
+            //Debug.Log("enemy hitbox contact");
             //Debug.Log("Hit object: " + other.name);
             PlayerStats playerHealth = other.GetComponentInParent<PlayerStats>();
-            Debug.Log(playerHealth);
+            //Debug.Log(playerHealth);
             playerHealth.DecrementHealthOnHit();
-            Debug.Log(playerHealth.GetPlayerHealth());
+            //Debug.Log(playerHealth.GetPlayerHealth());
         }
     }
 }
