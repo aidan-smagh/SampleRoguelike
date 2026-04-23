@@ -13,6 +13,7 @@ public class PlayerHitbox : MonoBehaviour
 
         if (other.CompareTag("EnemyHurtbox"))
         {
+            Debug.Log("Hit object: " + other.name);
             enemy = other.transform.parent.gameObject;
             animator = enemy.GetComponent<Animator>();
             animator.enabled = false;

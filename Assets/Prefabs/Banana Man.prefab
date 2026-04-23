@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292206997455409474}
   - component: {fileID: 7630983469873222366}
+  - component: {fileID: 2629051232473429702}
   m_Layer: 0
   m_Name: AttackHitbox
   m_TagString: Untagged
@@ -53,6 +54,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2629051232473429702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136391530070757539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def211c46241b4e56b7c27d83be8b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHitbox
 --- !u!1 &5329230068954384133
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +77,7 @@ GameObject:
   - component: {fileID: 1098861723400129991}
   - component: {fileID: 4091737379584593412}
   m_Layer: 0
-  m_Name: Hurtbox
+  m_Name: EnemyHurtbox
   m_TagString: EnemyHurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,9 +218,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81bb9eea30387e442899949a80011e55, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6913765330927508998}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81bb9eea30387e442899949a80011e55, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4374332551889267792}
     - targetCorrespondingSourceObject: {fileID: 827075974287967996, guid: 81bb9eea30387e442899949a80011e55, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3457246520038852319}
@@ -658,18 +668,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackController
   hookHitboxCollider: {fileID: 7630983469873222366}
   hookHitboxGO: {fileID: 1136391530070757539}
---- !u!114 &4374332551889267792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923452679722793477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: def211c46241b4e56b7c27d83be8b55e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHitbox
 --- !u!1 &1671968228974321377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1667929172310202805, guid: 81bb9eea30387e442899949a80011e55, type: 3}

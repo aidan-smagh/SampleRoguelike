@@ -13,7 +13,7 @@ public class EnemyHitbox : MonoBehaviour
         if (other.CompareTag("PlayerHurtbox"))
         {
             //Debug.Log("enemy hitbox contact");
-            //Debug.Log("Hit object: " + other.name);
+            //
             PlayerStats playerHealth = other.GetComponentInParent<PlayerStats>();
             //Debug.Log(playerHealth);
             playerHealth.DecrementHealthOnHit();
