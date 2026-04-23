@@ -4,6 +4,7 @@ public class PlayerHitbox : MonoBehaviour
 {
     private Animator animator;
     private GameObject enemy;
+    private PlayerStats playerStats;
     //fires every time two colliders that are set as triggers hit
     void OnTriggerEnter(Collider other)
     {
@@ -13,6 +14,9 @@ public class PlayerHitbox : MonoBehaviour
 
         if (other.CompareTag("EnemyHurtbox"))
         {
+            playerStats = gameObject.GetComponentInParent<PlayerStats>();
+            Debug.Log(playerStats);
+            playerStats.IncrementScore();
             Debug.Log("Hit object: " + other.name);
             enemy = other.transform.parent.gameObject;
             animator = enemy.GetComponent<Animator>();

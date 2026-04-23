@@ -4,12 +4,16 @@ using TMPro;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI playerHealthText;
-    [SerializeField] private int playerHealthNum = 2;
+    private int playerHealthNum = 2;
     [SerializeField] private GameObject gameOverScreen;
+    private int scoreNum;
+    [SerializeField] private TextMeshProUGUI scoreText;
+
 
     void Update()
     {
         playerHealthText.text = playerHealthNum.ToString();
+        scoreText.text = scoreNum.ToString();
         //Debug.Log(playerHealthNum);
         
         if (playerHealthNum <= 0)
@@ -27,5 +31,8 @@ public class PlayerStats : MonoBehaviour
     {
         return playerHealthNum;
     }
-
+    public int IncrementScore()
+    {
+        return scoreNum += 10;
+    }
 }
