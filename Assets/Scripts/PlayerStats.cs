@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     private int scoreNum;
     [SerializeField] private TextMeshProUGUI scoreText;
+    private PlayerController playerControls;
 
 
     void Update()
@@ -15,10 +16,13 @@ public class PlayerStats : MonoBehaviour
         playerHealthText.text = playerHealthNum.ToString();
         scoreText.text = scoreNum.ToString();
         //Debug.Log(playerHealthNum);
+        playerControls = gameObject.GetComponentInParent<PlayerController>();
+
         
         if (playerHealthNum <= 0)
         {
             gameOverScreen.SetActive(true);
+            playerControls.enabled = false;
         }
         
     }

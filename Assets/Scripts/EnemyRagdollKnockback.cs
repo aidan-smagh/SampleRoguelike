@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyRagdollKnockback : MonoBehaviour
 {
@@ -16,7 +17,13 @@ public class EnemyRagdollKnockback : MonoBehaviour
             //bodypart.GetComponent<BoxCollider>().enabled = !bodypart.GetComponent<BoxCollider>().enabled;
             bodypart.AddForce(Vector3.forward * 50, mode);
             bodypart.useGravity = true;
-        }
-            
+        } 
+        StartCoroutine(DespawnEnemyCoroutine(enemy)); 
+    }
+
+    IEnumerator DespawnEnemyCoroutine(GameObject enemy)
+    {
+        yield return new WaitForSeconds(5.0f);
+        enemy.SetActive(false);
     }
 }

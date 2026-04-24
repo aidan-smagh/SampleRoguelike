@@ -13,7 +13,10 @@ public class EnemyInstantiator : MonoBehaviour
         for (var i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(2.0f);
-            Instantiate(enemy, new Vector3(i * 2.0f, 0, 0), Quaternion.identity);
+            GameObject clone = Instantiate(enemy, new Vector3(i * 2.0f, 0, 0), Quaternion.identity);
+            clone.SetActive(true);
+            clone.GetComponent<Animator>().enabled = true;
+            clone.GetComponent<CharacterController>().enabled = true;
         }
 
     }
